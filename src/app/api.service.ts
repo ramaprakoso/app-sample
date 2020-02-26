@@ -4,302 +4,347 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-export class Order {
-  OrderNumber: number;
-  SaleAmount: number;
-  StoreCity: string;
-  StoreState: string;
-  Employee: string;
-  OrderDate: string;
+export class Employee {
+  ID: number;
+  FirstName: string;
+  LastName: string;
+  Prefix: string;
+  Position: string;
+  BirthDate: string;
+  HireDate: string;
+  Notes: string;
+  Address: string;
+  StateID: number;
 }
 
-let orders: Order[] = [{
-    "OrderNumber": 35703,
-    "SaleAmount": 11800,
-    "StoreCity": "Los Angeles",
-    "StoreState": "California",
-    "Employee": "Harv Mudd",
-    "OrderDate": "2014/04/10"
+export class State {
+  ID: number;
+  Name: string;
+}
+
+let employees: Employee[] = [{
+  "ID": 1,
+  "FirstName": "John",
+  "LastName": "Heart",
+  "Prefix": "Mr.",
+  "Position": "CEO",
+  "BirthDate": "1964/03/16",
+  "HireDate": "1995/01/15",
+  "Notes": "John has been in the Audio/Video industry since 1990. He has led DevAv as its CEO since 2003.\r\n\r\nWhen not working hard as the CEO, John loves to golf and bowl. He once bowled a perfect game of 300.",
+  "Address": "351 S Hill St.",
+  "StateID": 5
 }, {
-    "OrderNumber": 35711,
-    "OrderDate": "2014/01/12",
-    "SaleAmount": 16050,
-    "StoreState": "California",
-    "StoreCity": "San Jose",
-    "Employee": "Jim Packard"
+  "ID": 2,
+  "FirstName": "Robert",
+  "LastName": "Reagan",
+  "Prefix": "Mr.",
+  "Position": "CMO",
+  "BirthDate": "1974/09/07",
+  "HireDate": "2002/11/08",
+  "Notes": "Robert was recently voted the CMO of the year by CMO Magazine. He is a proud member of the DevAV Management Team.\r\n\r\nRobert is a championship BBQ chef, so when you get the chance ask him for his secret recipe.",
+  "Address": "4 Westmoreland Pl.",
+  "StateID": 4
 }, {
-    "OrderNumber": 35714,
-    "OrderDate": "2014/01/22",
-    "SaleAmount": 14750,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 3,
+  "FirstName": "Olivia",
+  "LastName": "Peyton",
+  "Prefix": "Mrs.",
+  "Position": "Sales Assistant",
+  "BirthDate": "1981/06/03",
+  "HireDate": "2012/05/14",
+  "Notes": "Olivia loves to sell. She has been selling DevAV products since 2012. \r\n\r\nOlivia was homecoming queen in high school. She is expecting her first child in 6 months. Good Luck Olivia.",
+  "Address": "807 W Paseo Del Mar",
+  "StateID": 5
 }, {
-    "OrderNumber": 35983,
-    "OrderDate": "2014/02/07",
-    "SaleAmount": 3725,
-    "StoreState": "Colorado",
-    "StoreCity": "Denver",
-    "Employee": "Todd Hoffman"
+  "ID": 4,
+  "FirstName": "Greta",
+  "LastName": "Sims",
+  "Prefix": "Ms.",
+  "Position": "HR Manager",
+  "BirthDate": "1977/11/22",
+  "HireDate": "1998/04/23",
+  "Notes": "Greta has been DevAV's HR Manager since 2003. She joined DevAV from Sonee Corp.\r\n\r\nGreta is currently training for the NYC marathon. Her best marathon time is 4 hours. Go Greta.",
+  "Address": "1700 S Grandview Dr.",
+  "StateID": 11
 }, {
-    "OrderNumber": 36987,
-    "OrderDate": "2014/03/11",
-    "SaleAmount": 14200,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 5,
+  "FirstName": "Brett",
+  "LastName": "Wade",
+  "Prefix": "Mr.",
+  "Position": "IT Manager",
+  "BirthDate": "1968/12/01",
+  "HireDate": "2009/03/06",
+  "Notes": "Brett came to DevAv from Microsoft and has led our IT department since 2012.\r\n\r\nWhen he is not working hard for DevAV, he coaches Little League (he was a high school pitcher).",
+  "Address": "1120 Old Mill Rd.",
+  "StateID": 13
 }, {
-    "OrderNumber": 38466,
-    "OrderDate": "2014/03/01",
-    "SaleAmount": 7800,
-    "StoreState": "California",
-    "StoreCity": "Los Angeles",
-    "Employee": "Harv Mudd"
+  "ID": 6,
+  "FirstName": "Sandra",
+  "LastName": "Johnson",
+  "Prefix": "Mrs.",
+  "Position": "Controller",
+  "BirthDate": "1974/11/15",
+  "HireDate": "2005/05/11",
+  "Notes": "Sandra is a CPA and has been our controller since 2008. She loves to interact with staff so if you've not met her, be certain to say hi.\r\n\r\nSandra has 2 daughters both of whom are accomplished gymnasts.",
+  "Address": "4600 N Virginia Rd.",
+  "StateID": 44
 }, {
-    "OrderNumber": 39420,
-    "OrderDate": "2014/02/15",
-    "SaleAmount": 20500,
-    "StoreState": "California",
-    "StoreCity": "San Jose",
-    "Employee": "Jim Packard"
+  "ID": 7,
+  "FirstName": "Kevin",
+  "LastName": "Carter",
+  "Prefix": "Mr.",
+  "Position": "Shipping Manager",
+  "BirthDate": "1978/01/09",
+  "HireDate": "2009/08/11",
+  "Notes": "Kevin is our hard-working shipping manager and has been helping that department work like clockwork for 18 months.\r\n\r\nWhen not in the office, he is usually on the basketball court playing pick-up games.",
+  "Address": "424 N Main St.",
+  "StateID": 5
 }, {
-    "OrderNumber": 39874,
-    "OrderDate": "2014/02/04",
-    "SaleAmount": 9050,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 8,
+  "FirstName": "Cynthia",
+  "LastName": "Stanwick",
+  "Prefix": "Ms.",
+  "Position": "HR Assistant",
+  "BirthDate": "1985/06/05",
+  "HireDate": "2008/03/24",
+  "Notes": "Cindy joined us in 2008 and has been in the HR department for 2 years. \r\n\r\nShe was recently awarded employee of the month. Way to go Cindy!",
+  "Address": "2211 Bonita Dr.",
+  "StateID": 4
 }, {
-    "OrderNumber": 42847,
-    "OrderDate": "2014/02/15",
-    "SaleAmount": 20400,
-    "StoreState": "Wyoming",
-    "StoreCity": "Casper",
-    "Employee": "Todd Hoffman"
+  "ID": 9,
+  "FirstName": "Kent",
+  "LastName": "Samuelson",
+  "Prefix": "Dr.",
+  "Position": "Ombudsman",
+  "BirthDate": "1972/09/11",
+  "HireDate": "2009/04/22",
+  "Notes": "As our ombudsman, Kent is on the front-lines solving customer problems and helping our partners address issues out in the field.    He is a classically trained musician and is a member of the Chamber Orchestra.",
+  "Address": "12100 Mora Dr",
+  "StateID": 26
 }, {
-    "OrderNumber": 43982,
-    "OrderDate": "2014/05/29",
-    "SaleAmount": 6050,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 10,
+  "FirstName": "Taylor",
+  "LastName": "Riley",
+  "Prefix": "Mr.",
+  "Position": "Network Admin",
+  "BirthDate": "1982/08/14",
+  "HireDate": "2012/04/14",
+  "Notes": "If you are like the rest of us at DevAV, then you've probably reached out for help from Taylor. He does a great job as a member of our IT department.",
+  "Address": "7776 Torreyson Dr",
+  "StateID": 5
 }, {
-    "OrderNumber": 56272,
-    "OrderDate": "2014/05/16",
-    "SaleAmount": 15850,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 11,
+  "FirstName": "Sam",
+  "LastName": "Hill",
+  "Prefix": "Mr.",
+  "Position": "Sales Assistant",
+  "BirthDate": "1984/02/17",
+  "HireDate": "2012/02/01",
+  "Notes": "Sammy is proud to be a member of the DevAV team. He joined the team in 2012 and has been in the sales department from the beginning.\r\n\r\nHe has just picked up golf so you can find him on the links every weekend.",
+  "Address": "645 Prospect Crescent",
+  "StateID": 11
 }, {
-    "OrderNumber": 57429,
-    "OrderDate": "2014/04/11",
-    "SaleAmount": 11050,
-    "StoreState": "Arizona",
-    "StoreCity": "Phoenix",
-    "Employee": "Clark Morgan"
+  "ID": 12,
+  "FirstName": "Kelly",
+  "LastName": "Rodriguez",
+  "Prefix": "Ms.",
+  "Position": "Support Assistant",
+  "BirthDate": "1988/05/11",
+  "HireDate": "2012/10/13",
+  "Notes": "Kelly loves people and that's why she joined DevAV's support department. One of the funniest people in the company, she does stand-up on the weekends at the Laugh Factory.",
+  "Address": "1601 W Mountain St.",
+  "StateID": 5
 }, {
-    "OrderNumber": 58292,
-    "OrderDate": "2014/04/05",
-    "SaleAmount": 13500,
-    "StoreState": "California",
-    "StoreCity": "Los Angeles",
-    "Employee": "Harv Mudd"
+  "ID": 13,
+  "FirstName": "Natalie",
+  "LastName": "Maguirre",
+  "Prefix": "Mrs.",
+  "Position": "Trainer",
+  "BirthDate": "1977/10/07",
+  "HireDate": "2008/06/19",
+  "Notes": "Natalie travels the US and teaches our partners how to explain the benefits of our products to customers.\r\n\r\nShe is a proud wife and mom and volunteers her time at the elementary school.",
+  "Address": "6400 E Bixby Hill Rd",
+  "StateID": 29
 }, {
-    "OrderNumber": 62427,
-    "OrderDate": "2014/05/17",
-    "SaleAmount": 23500,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 14,
+  "FirstName": "Walter",
+  "LastName": "Hobbs",
+  "Prefix": "Mr.",
+  "Position": "Programmer",
+  "BirthDate": "1984/12/24",
+  "HireDate": "2011/02/17",
+  "Notes": "Walter has been developing apps and websites for DevAV since 2011. His passion is software and if you ever walk by his desk, you'll know why.\r\n\r\nWally once worked 72 hours straight - writing code and fixing bugs.",
+  "Address": "10385 Shadow Oak Dr",
+  "StateID": 13
+}];
+
+let states: State[] = [{
+  "ID": 1,
+  "Name": "Alabama"
 }, {
-    "OrderNumber": 65977,
-    "OrderDate": "2014/02/13",
-    "SaleAmount": 2550,
-    "StoreState": "Wyoming",
-    "StoreCity": "Casper",
-    "Employee": "Todd Hoffman"
+  "ID": 2,
+  "Name": "Alaska"
 }, {
-    "OrderNumber": 66947,
-    "OrderDate": "2014/01/06",
-    "SaleAmount": 3500,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 3,
+  "Name": "Arizona"
 }, {
-    "OrderNumber": 68428,
-    "OrderDate": "2014/03/13",
-    "SaleAmount": 10500,
-    "StoreState": "California",
-    "StoreCity": "Los Angeles",
-    "Employee": "Harv Mudd"
+  "ID": 4,
+  "Name": "Arkansas"
 }, {
-    "OrderNumber": 69477,
-    "OrderDate": "2014/01/22",
-    "SaleAmount": 14200,
-    "StoreState": "California",
-    "StoreCity": "Anaheim",
-    "Employee": "Harv Mudd"
+  "ID": 5,
+  "Name": "California"
 }, {
-    "OrderNumber": 72947,
-    "OrderDate": "2014/03/05",
-    "SaleAmount": 13350,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 6,
+  "Name": "Colorado"
 }, {
-    "OrderNumber": 73088,
-    "OrderDate": "2014/01/21",
-    "SaleAmount": 8600,
-    "StoreState": "Nevada",
-    "StoreCity": "Reno",
-    "Employee": "Clark Morgan"
+  "ID": 7,
+  "Name": "Connecticut"
 }, {
-    "OrderNumber": 76927,
-    "OrderDate": "2014/04/04",
-    "SaleAmount": 9800,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 8,
+  "Name": "Delaware"
 }, {
-    "OrderNumber": 77297,
-    "OrderDate": "2014/01/07",
-    "SaleAmount": 10850,
-    "StoreState": "Arizona",
-    "StoreCity": "Phoenix",
-    "Employee": "Clark Morgan"
+  "ID": 9,
+  "Name": "District of Columbia"
 }, {
-    "OrderNumber": 84744,
-    "OrderDate": "2014/05/20",
-    "SaleAmount": 4650,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 10,
+  "Name": "Florida"
 }, {
-    "OrderNumber": 85028,
-    "OrderDate": "2014/02/08",
-    "SaleAmount": 2575,
-    "StoreState": "Nevada",
-    "StoreCity": "Reno",
-    "Employee": "Clark Morgan"
+  "ID": 11,
+  "Name": "Georgia"
 }, {
-    "OrderNumber": 87297,
-    "OrderDate": "2014/04/08",
-    "SaleAmount": 14200,
-    "StoreState": "Wyoming",
-    "StoreCity": "Casper",
-    "Employee": "Todd Hoffman"
+  "ID": 12,
+  "Name": "Hawaii"
 }, {
-    "OrderNumber": 88027,
-    "OrderDate": "2014/05/18",
-    "SaleAmount": 13650,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 13,
+  "Name": "Idaho"
 }, {
-    "OrderNumber": 94726,
-    "OrderDate": "2014/02/23",
-    "SaleAmount": 20500,
-    "StoreState": "California",
-    "StoreCity": "San Jose",
-    "Employee": "Jim Packard"
+  "ID": 14,
+  "Name": "Illinois"
 }, {
-    "OrderNumber": 95266,
-    "OrderDate": "2014/03/18",
-    "SaleAmount": 9050,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 15,
+  "Name": "Indiana"
 }, {
-    "OrderNumber": 98477,
-    "OrderDate": "2014/05/08",
-    "SaleAmount": 23500,
-    "StoreState": "Wyoming",
-    "StoreCity": "Casper",
-    "Employee": "Todd Hoffman"
+  "ID": 16,
+  "Name": "Iowa"
 }, {
-    "OrderNumber": 99247,
-    "OrderDate": "2014/02/27",
-    "SaleAmount": 2100,
-    "StoreState": "Utah",
-    "StoreCity": "Salt Lake City",
-    "Employee": "Clark Morgan"
+  "ID": 17,
+  "Name": "Kansas"
 }, {
-    "OrderNumber": 174884,
-    "OrderDate": "2014/03/03",
-    "SaleAmount": 7200,
-    "StoreState": "Colorado",
-    "StoreCity": "Denver",
-    "Employee": "Todd Hoffman"
+  "ID": 18,
+  "Name": "Kentucky"
 }, {
-    "OrderNumber": 188877,
-    "OrderDate": "2014/02/14",
-    "SaleAmount": 8750,
-    "StoreState": "Arizona",
-    "StoreCity": "Phoenix",
-    "Employee": "Clark Morgan"
+  "ID": 19,
+  "Name": "Louisiana"
 }, {
-    "OrderNumber": 191883,
-    "OrderDate": "2014/02/28",
-    "SaleAmount": 9900,
-    "StoreState": "California",
-    "StoreCity": "Los Angeles",
-    "Employee": "Harv Mudd"
+  "ID": 20,
+  "Name": "Maine"
 }, {
-    "OrderNumber": 192474,
-    "OrderDate": "2014/02/18",
-    "SaleAmount": 12800,
-    "StoreState": "California",
-    "StoreCity": "Anaheim",
-    "Employee": "Harv Mudd"
+  "ID": 21,
+  "Name": "Maryland"
 }, {
-    "OrderNumber": 193847,
-    "OrderDate": "2014/05/06",
-    "SaleAmount": 14100,
-    "StoreState": "California",
-    "StoreCity": "San Diego",
-    "Employee": "Harv Mudd"
+  "ID": 22,
+  "Name": "Massachusetts"
 }, {
-    "OrderNumber": 194877,
-    "OrderDate": "2014/03/17",
-    "SaleAmount": 4750,
-    "StoreState": "California",
-    "StoreCity": "San Jose",
-    "Employee": "Jim Packard"
+  "ID": 23,
+  "Name": "Michigan"
 }, {
-    "OrderNumber": 195746,
-    "OrderDate": "2014/02/04",
-    "SaleAmount": 9050,
-    "StoreState": "Nevada",
-    "StoreCity": "Las Vegas",
-    "Employee": "Harv Mudd"
+  "ID": 24,
+  "Name": "Minnesota"
 }, {
-    "OrderNumber": 197474,
-    "OrderDate": "2014/01/17",
-    "SaleAmount": 6400,
-    "StoreState": "Nevada",
-    "StoreCity": "Reno",
-    "Employee": "Clark Morgan"
+  "ID": 25,
+  "Name": "Mississippi"
 }, {
-    "OrderNumber": 198746,
-    "OrderDate": "2014/02/04",
-    "SaleAmount": 15700,
-    "StoreState": "Colorado",
-    "StoreCity": "Denver",
-    "Employee": "Todd Hoffman"
+  "ID": 26,
+  "Name": "Missouri"
 }, {
-    "OrderNumber": 214222,
-    "OrderDate": "2014/02/03",
-    "SaleAmount": 11050,
-    "StoreState": "Arizona",
-    "StoreCity": "Phoenix",
-    "Employee": "Clark Morgan"
+  "ID": 27,
+  "Name": "Montana"
+}, {
+  "ID": 28,
+  "Name": "Nebraska"
+}, {
+  "ID": 29,
+  "Name": "Nevada"
+}, {
+  "ID": 30,
+  "Name": "New Hampshire"
+}, {
+  "ID": 31,
+  "Name": "New Jersey"
+}, {
+  "ID": 32,
+  "Name": "New Mexico"
+}, {
+  "ID": 33,
+  "Name": "New York"
+}, {
+  "ID": 34,
+  "Name": "North Carolina"
+}, {
+  "ID": 35,
+  "Name": "Ohio"
+}, {
+  "ID": 36,
+  "Name": "Oklahoma"
+}, {
+  "ID": 37,
+  "Name": "Oregon"
+}, {
+  "ID": 38,
+  "Name": "Pennsylvania"
+}, {
+  "ID": 39,
+  "Name": "Rhode Island"
+}, {
+  "ID": 40,
+  "Name": "South Carolina"
+}, {
+  "ID": 41,
+  "Name": "South Dakota"
+}, {
+  "ID": 42,
+  "Name": "Tennessee"
+}, {
+  "ID": 43,
+  "Name": "Texas"
+}, {
+  "ID": 44,
+  "Name": "Utah"
+}, {
+  "ID": 45,
+  "Name": "Vermont"
+}, {
+  "ID": 46,
+  "Name": "Virginia"
+}, {
+  "ID": 47,
+  "Name": "Washington"
+}, {
+  "ID": 48,
+  "Name": "West Virginia"
+}, {
+  "ID": 49,
+  "Name": "Wisconsin"
+}, {
+  "ID": 50,
+  "Name": "Wyoming"
+}, {
+  "ID": 51,
+  "Name": "North Dakota"
 }];
 
 @Injectable()
 export class ApiService {
+  maxID = employees[employees.length - 1].ID;
 
-  constructor() { }
-  getOrders(): Order[] {
-    return orders; 
+  getMaxID() {
+      return ++this.maxID;
+  }
+
+  getEmployees(): Employee[] {
+      return employees;
+  }
+  getStates(): State[] {
+      return states;
   }
 }
